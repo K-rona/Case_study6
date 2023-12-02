@@ -46,7 +46,7 @@ def Lookthrough(CurrentDir):
             print(element, "," + "type = file")
 
         if os.path.isdir(CurrentDir + "/" + element):
-            print(element, "," + "type = file")
+            print(element, "," + "type = dir")
 
 
 def MoveDown(CurrentDir):
