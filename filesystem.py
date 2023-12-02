@@ -43,10 +43,10 @@ def Lookthrough(CurrentDir):
     for element in content:
 
         if os.path.isfile(CurrentDir + "/" + element):
-            print(element, "type = file")
+            print(element, "," + "type = file")
 
         if os.path.isdir(CurrentDir + "/" + element):
-            print(element, "type = dir")
+            print(element, "," + "type = file")
 
 
 def MoveDown(CurrentDir):
