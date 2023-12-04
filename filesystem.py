@@ -19,7 +19,7 @@ def AcceptCommand():
 
         command = input('Выберите пункт меню: ')
 
-    return command
+    return int(command)
 
 
 def MoveUp():
@@ -121,7 +121,7 @@ def RunCommand(command):
         CountBytes(CurrentDir)
 
     if command == 6:
-        target, path = input().split()
+        target, path = input("Выберите target и path").split()
         FindFiles(target,path)
 
 
