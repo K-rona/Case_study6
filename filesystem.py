@@ -9,32 +9,52 @@ MENU = "1. Просмотр каталога\n" \
        "7. Выход из программы"
 
 
-def Accept_command():
+def AcceptCommand():
+    command = input('Выберите пункт меню: ')
+
+    while command not in ['1','2','3','4','5','6','7']:
+        if command not in ['1','2','3','4','5','6','7']:
+
+            print("Неверная команда! Введите другой номер команды")
+
+        command = input('Выберите пункт меню: ')
+
+    return command
 
 
+def MoveUp():
+    dir = os.getcwd()
+    i = len(dir) - 1
+    while dir[i] != '\\':
+        i = i - 1
+    os.chdir(dir[:i])
 
-def RunCommand(command):
+def CountFiles(path):
 
-    CurrentDir = os.getcwd()
+    summ_file = 0
+    file_list = os.listdir(path)
 
-    if command == 1:
-        Lookthrough(CurrentDir)
+    for i in file_list:
+        if os.path.isfile(path + "\\" + i):
+            summ_file +=1
+        else:
+            summ_file += CountFiles(path + "\\" + i)
+    return summ_file
 
-    if command == 2:
-        MoveUp(CurrentDir)
+def FindFiles(target, path):
 
-    if command == 3:
-        MoveDown(CurrentDir)
+    list_path = []
+    all_file_list = os.listdir(path)
 
-    if command == 4:
-        CountFiles(CurrentDir)
+    for i in all_file_list:
+        if os.path.isfile(path + "\\" + i) and target in i:
+            list_path.append(path + "\\" + i)
 
-    if command == 5:
-        CountBytes(CurrentDir)
+        elif os.path.isdir(path + "\\" + i):
+            if FindFiles(target,path + "\\" + i):
+                list_path.append(FindFiles(target,path + "\\" + i))
 
-    if command == 6:
-        FindFiles(target,path)
-
+    return list_path
 
 def Lookthrough(CurrentDir):
 
@@ -81,7 +101,28 @@ def CountBytes(CurrentDir):
 
     return summ_bytes
 
+def RunCommand(command):
 
+    CurrentDir = os.getcwd()
+
+    if command == 1:
+        Lookthrough(CurrentDir)
+
+    if command == 2:
+        MoveUp(CurrentDir)
+
+    if command == 3:
+        MoveDown(CurrentDir)
+
+    if command == 4:
+        CountFiles(CurrentDir)
+
+    if command == 5:
+        CountBytes(CurrentDir)
+
+    if command == 6:
+        target, path = input().split()
+        FindFiles(target,path)
 
 
 def main():
@@ -89,7 +130,7 @@ def main():
 
         print(os.getcwd())
         print(MENU)
-        command = acceptCommand()
+        command = AcceptCommand()
 
         if command == 7:
             print('Работа программы завершена.')
