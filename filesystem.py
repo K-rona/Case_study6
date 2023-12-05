@@ -114,10 +114,10 @@ def RunCommand(command):
         MoveDown(CurrentDir)
 
     if command == 4:
-        CountFiles(CurrentDir)
+        print(CountFiles(CurrentDir))
 
     if command == 5:
-        CountBytes(CurrentDir)
+        print(CountBytes(CurrentDir))
 
     if command == 6:
            target, path = input("Выберите target и path").split()
