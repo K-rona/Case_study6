@@ -88,7 +88,6 @@ def MoveDown(CurrentDir):
 def CountBytes(CurrentDir):
 
     content = os.listdir(CurrentDir)
-    print(content)
     summ_bytes = 0
 
     for i in content:
