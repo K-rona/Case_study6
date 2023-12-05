@@ -121,8 +121,13 @@ def RunCommand(command):
         CountBytes(CurrentDir)
 
     if command == 6:
-        target, path = input("Выберите target и path").split()
-        FindFiles(target,path)
+           target, path = input("Выберите target и path").split()
+           find_file = FindFiles(target,path)
+           if find_file:
+                  for i in find_file:
+                         print(i)
+           else:
+                  print("Файл не найден")
 
 
 def main():
