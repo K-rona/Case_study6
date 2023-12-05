@@ -52,7 +52,7 @@ def FindFiles(target, path):
 
         elif os.path.isdir(path + "\\" + i):
             if FindFiles(target,path + "\\" + i):
-                list_path.append(FindFiles(target,path + "\\" + i))
+                list_path.extend(FindFiles(target,path + "\\" + i))
 
     return list_path
 
