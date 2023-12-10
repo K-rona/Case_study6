@@ -15,7 +15,7 @@ SUBDIRECTORY_NAME = "Введите название подкаталога: "
 
 ERROR_SUBDIRECTORY = "Некорректное название каталога"
 
-FINDING_FILES = "Выберите target и path"
+FINDING_FILES = "Выберите target и path: "
 
 FILE_ERROR = "Файл не найден"
 
