@@ -3,6 +3,7 @@ import Text_Ru
 
 
 def accept_command():
+    
     command = input(Text_Ru.MENU_ITEM)
 
     while command not in ['1', '2', '3', '4', '5', '6', '7']:
@@ -16,6 +17,7 @@ def accept_command():
 
 
 def move_up():
+    
     directory = os.getcwd()
     i = len(directory) - 1
     
@@ -130,6 +132,7 @@ def run_command(command):
 
 
 def main():
+    
     while True:
 
         print(os.getcwd())
