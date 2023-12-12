@@ -3,7 +3,9 @@ import Text_Ru
 
 
 def accept_command():
-    
+    '''The main program that displays the path to the current directory and menu. 
+    Calls the command execution function.
+    '''
     command = input(Text_Ru.MENU_ITEM)
 
     while command not in ['1', '2', '3', '4', '5', '6', '7']:
@@ -17,7 +19,7 @@ def accept_command():
 
 
 def move_up():
-    
+    '''Makes the parent directory current.'''
     directory = os.getcwd()
     i = len(directory) - 1
     
@@ -27,7 +29,9 @@ def move_up():
 
 
 def count_files(path):
-
+    '''A recursive function that counts the number of files in the specified directory path. 
+    The count includes all files located in subdirectories. Returns the number of files.
+    '''
     summ_file = 0
     file_list = os.listdir(path)
 
@@ -40,7 +44,10 @@ def count_files(path):
 
 
 def find_files(target, path):
-
+    '''A recursive function that generates a list of paths to files whose names contain target. 
+    The search includes all subdirectories of the path directory. 
+    If the files are not found, the corresponding message is displayed
+    '''
     list_path = []
     all_file_list = os.listdir(path)
 
@@ -56,7 +63,7 @@ def find_files(target, path):
 
 
 def look_through(current_dir):
-
+    '''function showing files and subdirectories in the specified directory current_dir'''
     content = os.listdir(current_dir)
 
     for element in content:
@@ -69,7 +76,8 @@ def look_through(current_dir):
 
 
 def move_down(current_dir):
-
+    '''Prompts for the name of a subdirectory. If the name is specified correctly, 
+    it makes the directory located in currentDir current, otherwise it displays an error message.'''
     test = False
 
     while not test:
@@ -85,7 +93,11 @@ def move_down(current_dir):
 
 
 def count_bytes(current_dir):
-
+    '''A recursive function that calculates the total size (in bytes) 
+    of all files in the specified directory path. 
+    The count includes all files located in subdirectories. 
+    Returns the total number of bytes.
+    '''
     content = os.listdir(current_dir)
     summ_bytes = 0
 
@@ -101,7 +113,7 @@ def count_bytes(current_dir):
 
 
 def run_command(command):
-
+    '''Determines by the command number which function should be executed.'''
     current_dir = os.getcwd()
 
     if command == 1:
@@ -132,7 +144,9 @@ def run_command(command):
 
 
 def main():
-    
+    '''The main program that displays the path to the current directory and menu. 
+    Calls the command execution function.
+    '''
     while True:
 
         print(os.getcwd())
